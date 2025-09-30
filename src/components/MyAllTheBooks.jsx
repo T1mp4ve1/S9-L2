@@ -3,13 +3,12 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import fantasyBooks from "../books/fantasy.json";
 
-function MyAllTheBooks() {
+function MyAllTheBooks({ library }) {
   return (
     <Container>
       <Row xs={1} sm={2} md={3} lg={5} className="g-4">
-        {fantasyBooks.map((book) => {
+        {library.map((book) => {
           return (
             <Col key={book.asin}>
               <Card className="h-100">
