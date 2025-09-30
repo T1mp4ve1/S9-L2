@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState } from "react";
+import { Component, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import MyCustomNav from "./components/MyCustomNav";
 import MyCustomFooter from "./components/MyCustomFooter";
@@ -12,25 +12,53 @@ import horrorBooks from "./books/horror.json";
 import romanceBooks from "./books/romance.json";
 import scifiBooks from "./books/scifi.json";
 
-function App() {
-  const [selectedBooks, setSelectedBooks] = useState(fantasyBooks);
-  return (
-    <>
-      <MyCustomNav />
-      <MyCustomAlert />
+class App extends Component {
+  // const [selectedBooks, setSelectedBooks] = useState(fantasyBooks);
+  state = { selectedBooks: fantasyBooks };
+  render() {
+    return (
+      <>
+        <MyCustomNav />
+        <MyCustomAlert />
 
-      <div className="text-center my-3">
-        <button onClick={() => setSelectedBooks(fantasyBooks)}>Fantasy</button>
-        <button onClick={() => setSelectedBooks(historyBooks)}>History</button>
-        <button onClick={() => setSelectedBooks(horrorBooks)}>Horror</button>
-        <button onClick={() => setSelectedBooks(romanceBooks)}>Romance</button>
-        <button onClick={() => setSelectedBooks(scifiBooks)}>Sci-Fi</button>
-      </div>
+        <div className="text-center my-3">
+          <button
+            className="btn btn-primary me-2"
+            onClick={() => this.setState({ selectedBooks: fantasyBooks })}
+          >
+            Fantasy
+          </button>
+          <button
+            className="btn btn-secondary me-2"
+            onClick={() => this.setState({ selectedBooks: historyBooks })}
+          >
+            History
+          </button>
+          <button
+            className="btn btn-danger me-2"
+            onClick={() => this.setState({ selectedBooks: horrorBooks })}
+          >
+            Horror
+          </button>
+          <button
+            className="btn btn-warning me-2"
+            onClick={() => this.setState({ selectedBooks: romanceBooks })}
+          >
+            Romance
+          </button>
+          <button
+            className="btn btn-dark me-2"
+            onClick={() => this.setState({ selectedBooks: scifiBooks })}
+          >
+            Sci-Fi
+          </button>
+        </div>
 
-      <MyAllTheBooks library={selectedBooks} />
-      <MyCustomFooter />
-    </>
-  );
+        <MyAllTheBooks library={this.state.selectedBooks} />
+        <MyCustomFooter />
+      </>
+    );
+  }
 }
 
 export default App;
