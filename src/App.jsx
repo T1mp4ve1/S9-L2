@@ -1,5 +1,5 @@
 import "./App.css";
-import { Component, useState } from "react";
+import { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import MyCustomNav from "./components/MyCustomNav";
 import MyCustomFooter from "./components/MyCustomFooter";
